@@ -10,7 +10,7 @@ import com.crm.qa.base.TestBase;
 public class CrmHomePage extends TestBase {
 	@FindBy(xpath="//*[@id='navmenu']/ul/li[2]/a")
 	private WebElement calender;
-	
+	//aaaaaa
 	@FindBy(xpath="//*[@id='navmenu']/ul/li[2]/ul/li[3]/a")
 	private WebElement calenderWeekView;
 	
