@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Dress Test Automation Test Suite">
+
+	<!--<listeners>      -->
+	<!--	<listener class-name="com.crm.qa.utils.JyperionListner" />  -->
+	<!-- </listeners>  -->
+
+
+	<test name="Dress Test Cases">
+		<classes>
+			<class name="com.crm.qa.testcases.LoginTest"></class>
+
+		</classes>
+	</test>
+</suite>
+
