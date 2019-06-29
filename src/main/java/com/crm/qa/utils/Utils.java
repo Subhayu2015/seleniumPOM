@@ -1,5 +1,7 @@
 package com.crm.qa.utils;
 
+import io.qameta.allure.Attachment;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -14,10 +16,12 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.OutputType;
 import org.testng.annotations.DataProvider;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
 
 //import org.apache.commons.io.FileUtils;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -29,6 +33,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
 import com.crm.qa.base.TestBase;
+
 //import com.sun.jna.platform.FileUtils;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -78,15 +83,19 @@ public class Utils extends TestBase  {
 		return map;
 	}
 
-
-
-	public static void takeScreenshotAtEndOfTest() throws IOException {
+/*The Attachment annotation is to attach the screenshot  in Allure report
+ * Value tag is for the name or tag of the screenshot
+ * BYTES is the output type so that it can be embeded in the Allure report
+ */
+	
+	@Attachment(value="Page screenshot", type = "image/png")
+	public static byte[] takeScreenshotAtEndOfTest() throws IOException {
 		TakesScreenshot scrShot =((TakesScreenshot)driver);
-		File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
-		
+		//File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
+		return scrShot.getScreenshotAs(OutputType.BYTES);
 		//File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		//String currentDir = System.getProperty("user.dir");
-		FileUtils.copyFile(SrcFile, new File("/Users/548817u/Movies/SeleniumScreenshot" + "/screenshots/" +  System.currentTimeMillis() + ".png"));
+		//FileUtils.copyFile(SrcFile, new File("E:/SeleniumScreenshot" + "/screenshots/" +  System.currentTimeMillis() + ".png"));
 		
 	}
 		
