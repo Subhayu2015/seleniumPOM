@@ -31,6 +31,8 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.crm.qa.base.TestBase;
 
@@ -99,5 +101,17 @@ public class Utils extends TestBase  {
 		
 	}
 		
+	
+	public static void explicitWaitConfigure(WebElement element) {
+		
+		WebElement waitElement=wait.until(ExpectedConditions.visibilityOf(element));
+		boolean status = waitElement.isDisplayed();
+		if (status) {
+			System.out.println(element.getText()+" is visible======");
+		} else {
+			System.out.println(element.getText()+"is not visible======");
+		}
+		
+	}
 	}
 

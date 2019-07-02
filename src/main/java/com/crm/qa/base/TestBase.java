@@ -13,6 +13,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.crm.qa.pages.CrmHomePage;
 import com.crm.qa.pages.DressCartPage;
@@ -29,6 +30,7 @@ public class TestBase {
 	protected DressCartPage dressCartPage;
 	public  static EventFiringWebDriver e_driver;
 	public static WebEventListener eventListener;
+	public static WebDriverWait wait;
 	
 	public TestBase(){
 		prop= new Properties();
@@ -82,6 +84,8 @@ public class TestBase {
 		driver.manage().deleteAllCookies();	
 		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 		driver.get(prop.getProperty("url"));
+		String timeOut=prop.getProperty("waitTimeOut");
+		wait=new WebDriverWait(driver,Integer.parseInt(timeOut));
 		
 				
 	}
